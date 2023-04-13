@@ -47,7 +47,7 @@ body{
     /* Dark blue/dark-blue-300 */
 }
 textarea{
-    
+    resize: none;
     position: absolute;
     width: 577px;
     height: 48px;
