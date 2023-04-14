@@ -3,7 +3,7 @@ var unTouched = false; // no se ha cambiado el valor por defecto del text area -
 var encriptarButton = document.getElementById("encriptar");
 var desencriptarButton = document.getElementById("desencriptar");
 var copiar = document.getElementById("copiar");
-var RegEx= /[^a-z]/; // algo que no es una minuscula
+var RegEx= /^[a-z\s]*$/;   // algo que no es una minuscula o espacios
 
 input.addEventListener("change",function(){ unTouched=true; }); // alguien cambio el texto por default, variable pasa a true
 encriptarButton.addEventListener("click",encriptar);
@@ -22,7 +22,7 @@ function encriptar(){
     let texto = input.value;
     let output = ""
     if( unTouched== true &&  texto != ""){// no vamos a encriptar el valor por defecto ni un texto vacío
-        if(RegEx.exec(texto)== null){ // solo minusculas devuelve null, de lo contrario entramos al if
+        if(RegEx.exec(texto) != null){ // solo minusculas devuelve null, de lo contrario entramos al if
             // mensaje de error 
             for(i = 0; i<texto.length;i++){
                switch(texto[i]){
@@ -67,7 +67,7 @@ function desencriptar(){
     let texto = input.value ;
     let aux = "";
     if( unTouched== true &&  texto != ""){
-        if(RegEx.exec(texto)== null){ 
+        if(RegEx.exec(texto) != null){ 
             aux = texto.replaceAll("enter","e");
             texto= aux.replaceAll("imes","i");
             aux= texto.replaceAll("ai","a");
